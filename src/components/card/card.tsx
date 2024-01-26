@@ -12,16 +12,13 @@ const Card: React.FC = () => {
         const element = cardRef.current;
         if (element) {
             setWidth(element.offsetWidth);
-            setHeight(element.offsetHeight - 40 );
-            console.log('Width of .card:', width);
-            console.log('Height of .card:', height);
-            // Now you can use width and height as needed
+            setHeight(element.offsetHeight - 40);
         }
     }, []);
 
     return (
         <>
-        <div className="card primary" ref={cardRef}>
+        <div className={`card primary ${window.innerWidth > 1024 ? 'windowCard': ''}`} ref={cardRef}>
         <Confetti
                 width={width}
                 height={height}
@@ -36,8 +33,12 @@ const Card: React.FC = () => {
                     <p>Date:<strong className="has-text-purp">Friday 26th April 2024</strong></p>
                     <p>Time:<strong className="has-text-purp">19:00</strong></p>
                     <p>Location:<strong className="has-text-purp">The Naval Club, L14 3NN</strong></p>
-
                 </span>
+            </div>
+            <div className='card-footer'>
+                <div className="card-footer-item">
+                    <small className='is-size-6'>children are allowed at the venue, and are not required to leave at a specific time.</small>
+                </div>
             </div>
         </div>
         </>
