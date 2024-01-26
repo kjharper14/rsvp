@@ -1,0 +1,13 @@
+.card{
+    z-index:999;
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: transparent!important;
+    border-radius: 0rem!important;
+    border: 2px solid black;
+    box-shadow: none!important;
+    bottom: 3em;
+}
+
+strong {
+    color: #756AB6;
+}

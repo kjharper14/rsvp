@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import WelcomeMessage from './components/typewriter/welcomeMessage/welcomeMessage';
+import InvitationPage from './pages/invitation/invitation';
+import balloon from './background.png';
 
 function App() {
+  let [welcomeMessageEnded, setWelcomeMessageEnded] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App-header">
+      {welcomeMessageEnded === true && <img src={balloon} alt="" />}
+
+        <div className="container is-fluid">
+
+            {welcomeMessageEnded === false ? 
+            <>
+
+              <h1 className="text-3xl font-bold">
+                <WelcomeMessage checkWelcomeMessage={setWelcomeMessageEnded}/>
+              </h1>
+            </>
+                :
+                <div className="column is-full">
+                  <InvitationPage/>
+                </div>
+              }
+          </div>
+          {welcomeMessageEnded === true && <img src={balloon} alt="" className='rotate'/>}
+
+      </div>
     </div>
   );
 }
